@@ -1,0 +1,57 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "employees": [
+    {
+      "id": "cefa",
+      "firstName": "emad",
+      "lastName": "khan",
+      "email": "e@gmail.com",
+      "dob": "2024-10-15T18:30:00.000Z",
+      "gender": "male",
+      "education": "Graduate",
+      "company": "Kaplan",
+      "experience": 2,
+      "package": 10
+    },
+    {
+      "firstName": "riufhnf",
+      "lastName": "patil",
+      "email": "r@gmail.com",
+      "dob": "2024-10-15T18:30:00.000Z",
+      "gender": "female",
+      "education": "Graduate",
+      "company": "google",
+      "experience": 1,
+      "package": 3,
+      "id": "a7b4"
+    },
+    {
+      "firstName": "esgfgf",
+      "lastName": "patil",
+      "email": "r@gmail.com",
+      "dob": "2024-10-14T18:30:00.000Z",
+      "gender": "female",
+      "education": "Post Graduate",
+      "company": "kapan",
+      "experience": 1,
+      "package": 13,
+      "id": "4bf2"
+    }
+  ]
+}

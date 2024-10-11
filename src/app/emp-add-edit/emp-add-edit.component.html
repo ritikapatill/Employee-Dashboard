@@ -1,0 +1,98 @@
+<div mat-dialog-title>
+    <h1>Employee Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()"> 
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>First name</mat-label>
+                <input matInput type="text" placeholder="Ex. Technical" formControlName="firstName">
+                <mat-error *ngIf="empForm.get('firstName')?.touched && empForm.get('firstName')?.invalid">
+                    First Name is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Ex. Babaji" formControlName="lastName">
+                <mat-error *ngIf="empForm.get('lastName')?.touched && empForm.get('lastName')?.invalid">
+                    Last Name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ex. test@gmail.com" formControlName="email">
+                <mat-error *ngIf="empForm.get('email')?.touched && empForm.get('email')?.invalid">
+                    <span *ngIf="empForm.get('email')?.errors?.['required']">Email is required</span>
+                    <span *ngIf="empForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Date of birth</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dob">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="empForm.get('dob')?.touched && empForm.get('dob')?.invalid">
+                    Date of birth is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-radio-group aria-label="Select an option" formControlName="gender">
+                <mat-label><b>Gender</b></mat-label>
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="others">Others</mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="empForm.get('gender')?.touched && empForm.get('gender')?.invalid">
+                Gender is required
+            </mat-error>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Education</mat-label>
+                <mat-select formControlName="education">
+                    <mat-option *ngFor="let val of education" [value]="val">{{val}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="empForm.get('education')?.touched && empForm.get('education')?.invalid">
+                    Education is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Company</mat-label>
+                <input matInput placeholder="Ex. Google" formControlName="company">
+                <mat-error *ngIf="empForm.get('company')?.touched && empForm.get('company')?.invalid">
+                    Company is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Experience</mat-label>
+                <input matInput placeholder="Ex. 4" type="number" formControlName="experience">
+                <mat-error *ngIf="empForm.get('experience')?.touched && empForm.get('experience')?.invalid">
+                    Experience is required (minimum 1 year)
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Package</mat-label>
+                <input matInput placeholder="Ex. 12" type="number" formControlName="package">
+                <mat-hint>In rupees</mat-hint>
+                <mat-error *ngIf="empForm.get('package')?.touched && empForm.get('package')?.invalid">
+                    Package is required (minimum 1 rupee)
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="button" type="submit">{{data ? 'Update':'Save'}}</button>
+    </div>
+</form>
